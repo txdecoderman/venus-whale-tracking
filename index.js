@@ -81,9 +81,9 @@ const main = async () => {
                 if (Number(valueUsd) < Number(process.env.THRESHOLD_VALUE_USD)) continue
 
                 const msg =
-                `🚨 VENUS — ${action.toUpperCase()} ${formatBigNumber(Number(tokens[0].ui_amount))} <a href="${EXPLORER_URL}/token/${tokens[0].address}">${tokens[0].symbol}</a> ($${formatBigNumber(Number(valueUsd))})`
-                + `User: <code>${participants[0].address}</code>`
-                + `<a href="${EXPLORER_URL}/tx/${txHash}">View on Explorer</a>`
+                `🚨 VENUS — ${action.toUpperCase()} ${formatBigNumber(Number(tokens[0].ui_amount))} <a href="${EXPLORER_URL}/token/${tokens[0].address}">${tokens[0].symbol}</a> ($${formatBigNumber(Number(valueUsd))})\n`
+                + `User: <code>${participants[0].address}</code>\n`
+                + `<a href="${EXPLORER_URL}/tx/${txHash}">View on Explorer</a>\n`
                 sendTelegramMessage(msg, true)
             }
         }
