@@ -80,9 +80,10 @@ const main = async () => {
                 if (protocol !== process.env.PROTOCOL && source !== process.env.PROTOCOL) continue
                 if (Number(valueUsd) < Number(process.env.THRESHOLD_VALUE_USD)) continue
 
-                const msg = `🚨 VENUS — ${action.toUpperCase()} ${formatBigNumber(Number(tokens[0].ui_amount))} <a href="${EXPLORER_URL}/token/${tokens[0].address}">${tokens[0].symbol}</a> ($${formatBigNumber(Number(valueUsd))})
-                User: <code>${participants[0].address}</code>
-                <a href="${EXPLORER_URL}/tx/${txHash}">View on Explorer</a>`
+                const msg =
+                `🚨 VENUS — ${action.toUpperCase()} ${formatBigNumber(Number(tokens[0].ui_amount))} <a href="${EXPLORER_URL}/token/${tokens[0].address}">${tokens[0].symbol}</a> ($${formatBigNumber(Number(valueUsd))})`
+                + `User: <code>${participants[0].address}</code>`
+                + `<a href="${EXPLORER_URL}/tx/${txHash}">View on Explorer</a>`
                 sendTelegramMessage(msg, true)
             }
         }
