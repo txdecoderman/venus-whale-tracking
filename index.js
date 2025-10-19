@@ -42,7 +42,8 @@ const main = async () => {
         // Send the DEX message after connection is established
         const message = {
             type: 'LENDING',
-            protocol: process.env.PROTOCOL
+            protocol: process.env.PROTOCOL,
+            min_value_usd: Number(process.env.THRESHOLD_VALUE_USD)
         }
         ws.send(JSON.stringify(message))
         console.log('Sent message:', message)
