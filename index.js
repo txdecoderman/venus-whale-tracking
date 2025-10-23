@@ -1,7 +1,11 @@
 const { default: axios } = require('axios')
 const { formatBigNumber } = require('./format')
 const dotenv = require('dotenv')
-dotenv.config()
+const path = require('path')
+
+const envFile = !process.env.NODE_ENV ? '.env' : `.env.${process.env.NODE_ENV}`
+dotenv.config({ path: path.resolve(__dirname, envFile) })
+
 const WebSocket = require('ws')
 
 const EXPLORER_URL = process.env.EXPLORER_URL
