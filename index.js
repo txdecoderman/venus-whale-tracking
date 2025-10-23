@@ -33,11 +33,11 @@ const sendTelegramMessage = async (msg, isHtmlMode = false) => {
 const main = async () => {
     // Connect through the WebSocket proxy with authentication
     const apiKey = process.env.TXDECODER_API_KEY
-    const proxyUrl = 'wss://bsc-api.txdecoder.xyz/ws/'
+    const proxyUrl = process.env.TXDECODER_WSS
     const ws = new WebSocket(proxyUrl, { headers: { 'x-api-key': apiKey }, rejectUnauthorized: false })
 
     ws.on('open', () => {
-        console.log('Connected to BSC WebSocket server')
+        console.log('Connected to TxDecoder WebSocket server')
 
         // Send the DEX message after connection is established
         const message = {
