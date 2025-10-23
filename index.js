@@ -64,6 +64,10 @@ const main = async () => {
       })
     ws.on('message', (data) => {
         const message = JSON.parse(data)
+        if (message.error) {
+            console.error('Error:', message.message)
+            process.exit(1)
+        }
         // Receive message from WebSocket, format is an object of User Actions
         // https://txdecoder.gitbook.io/docs/data-schema/user-action
         // {
