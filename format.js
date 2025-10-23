@@ -30,11 +30,11 @@ const formatBigNumber = (number) => {
   } else if (number >= QUADRILLION) {
     return `${formatNumber(parseFloat(number / QUADRILLION))} QUAD`
   } else if (number >= TRILLION) {
-    return `${formatNumber(parseFloat(number / TRILLION))} TRIL`
+    return `${formatNumber(parseFloat(number / TRILLION))} T `
   } else if (number >= BILLION) {
-    return `${formatNumber(parseFloat(number / BILLION))} BIL `
+    return `${formatNumber(parseFloat(number / BILLION))} B `
   } else if (number >= MILLION) {
-    return `${formatNumber(parseFloat(number / MILLION))} MIL `
+    return `${formatNumber(parseFloat(number / MILLION))} M `
   } else if (number >= THOUSAND) {
     return `${formatNumber(parseFloat(number / THOUSAND))} K `
   }
