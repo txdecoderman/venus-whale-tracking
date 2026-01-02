@@ -46,9 +46,11 @@ const main = async () => {
         // Send the DEX message after connection is established
         const message = {
             type: 'LENDING',
-            protocol: process.env.PROTOCOL,
             min_value_usd: Number(process.env.THRESHOLD_VALUE_USD)
         }
+	if (process.env.PROTOCOL) {
+		message.protocol = process.env.PROTOCOL
+	}
         ws.send(JSON.stringify(message))
         console.log('Sent message:', message)
     })
@@ -85,7 +87,7 @@ console.log(`RECEIVE MSG ${data}`)
             for (const userAction of userActions) {
                 const { tokens, participants, tx_hash: txHash, value_usd: valueUsd, action, protocol, source } = userAction
                 if (!txHash) continue
-                if (action !== 'supply' && action !== 'borrow' && action !== 'flash_loan' && action !== 'liquidate') continue
+                if (action === 'withdraw') continue
                 if (protocol !== process.env.PROTOCOL && source !== process.env.PROTOCOL) continue
                 if (Number(valueUsd) < Number(process.env.THRESHOLD_VALUE_USD)) continue
 
