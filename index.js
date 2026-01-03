@@ -87,7 +87,7 @@ console.log(`RECEIVE MSG ${data}`)
             for (const userAction of userActions) {
                 const { tokens, participants, tx_hash: txHash, value_usd: valueUsd, action, protocol, source } = userAction
                 if (!txHash) continue
-                if (action === 'withdraw') continue
+                if (action === 'withdraw' || action === 'repay') continue
                 if (protocol !== process.env.PROTOCOL && source !== process.env.PROTOCOL) continue
                 if (Number(valueUsd) < Number(process.env.THRESHOLD_VALUE_USD)) continue
 
